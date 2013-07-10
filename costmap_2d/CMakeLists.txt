@@ -27,6 +27,10 @@ include_directories(
 
 add_definitions(${EIGEN_DEFINITIONS})
 
+if(NOT CMAKE_SIZEOF_VOID_P EQUAL 8)
+	add_definitions(-DEIGEN_DONT_ALIGN)
+endif()
+
 # messages
 add_message_files(
     DIRECTORY msg
