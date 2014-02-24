@@ -22,7 +22,9 @@ catkin_package(
         roslib
         roscpp
         tf
-        nav_msgs
+        nav_msgs    
+    INCLUDE_DIRS 
+        include
 )
 include_directories( include )
 add_library(image_loader src/image_loader.cpp)
@@ -76,4 +78,12 @@ install(
 install(TARGETS
     image_loader
     LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+)
+
+
+# Mark cpp header files for installation
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  FILES_MATCHING PATTERN "*.h"
+  PATTERN ".svn" EXCLUDE
 )
